@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:geocoding/geocoding.dart';
+import 'body.dart';
+//import 'package:geocoding/geocoding.dart';
+//import 'calc.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -12,23 +14,18 @@ class MyApp extends StatelessWidget {
           title: const Text("Test App"),
           backgroundColor: Colors.deepOrange[200],
         ),
-        body: Column(children: [
-          Text('The Question'),
-          TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Bütçe girin.',
-              ),
-              validator: (String? value) {
-                if (value == null || value.isEmpty) {
-                  return 'Lütfen bir sayı girin.';
-                }
-                return null;
-              }),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            
-          ),
-        ]),
+        body: Stack(
+          children: const <Widget>[
+            SizedBox(
+              width: 400,
+              child: MyCustomForm(),
+            ),
+            SizedBox(
+              width: 350,
+              child: DropDownView(),
+            ),
+          ],
+        ),
         backgroundColor: Colors.lightBlue[50],
       ),
     );
